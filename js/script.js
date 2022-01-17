@@ -1,28 +1,20 @@
-'use strict';
+"use strict";
 
-let num = 50;
+const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-// while (num < 55) {
-//     console.log(num);
-//     num++;
-// }
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    private: false
+};
 
-// do {
-//     console.log(num);
-//     num++;
-// }
-// while (num < 55);
+for (let i = 0; i < 2; i++) {
+    let a = prompt('Один из последних просмотренных фильмов?', ''),
+        b = prompt('На сколько оцените его?', '');
 
-// for (let i = 1; i < 10; i++) {
-//     console.log(num);
-//     num++;
-// }
+    personalMovieDB.movies[a] = b;
+}
 
-// for (let i = 1; i < 10; i++) {
-//     if (i === 6) {
-//         // break - закончить цикл
-//         // continue - пропустить 
-//     }
-
-//     console.log(i);
-// }
+console.log(personalMovieDB);
