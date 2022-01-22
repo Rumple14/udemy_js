@@ -1,32 +1,66 @@
-"use strict";
+'use strict';
 
-const str = 'test';
-const arr = [1, 2, 4];
+let numberOfFilms;
 
-// console.log(str[2] = 'd');
+function start() {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-// console.log(str.toUpperCase());
-console.log(str.toLowerCase());
-console.log(str);
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
+}
 
-const fruit = 'Some fruit';
-console.log(fruit.indexOf('q'));
-
-
-const logg = 'Hello World!';
-
-// console.log(logg.slice(6, 11));
-// console.log(logg.slice(6));
-
-// console.log(logg.substring(6, 11));
-
-console.log(logg.substr(6, 5));
+start();
 
 
-const num = 12.2;
-console.log(Math.round(num));
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    private: false
+};
 
 
-const test = '12.2px';
-// console.log(parseInt(test));
-console.log(parseFloat(test));
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        let a = prompt('Один из последних просмотренных фильмов?', ''),
+            b = prompt('На сколько оцените его?', '');
+    
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+        } else {
+            console.log('error');
+            i--;
+        }
+    }
+}
+
+rememberMyFilms();
+
+
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log('Просмотрено довольно мало фильмов');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+        console.log('Вы классический зритель');
+    } else if(personalMovieDB.count >=30) {
+        console.log('Вы киноман');
+    } else {
+        console.log('Произошла ошибка');
+    };
+}
+
+detectPersonalLevel();
+
+
+
+function showMyDB() {
+    while (personalMovieDB.private == false) {
+        console.log(personalMovieDB);
+        break;
+    }
+}
+
+showMyDB();
