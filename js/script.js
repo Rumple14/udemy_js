@@ -64,3 +64,18 @@ function showMyDB() {
 }
 
 showMyDB();
+
+
+
+let c;
+
+function writeYourGenres() {
+    for(let i = 1; i < 4; i++) {
+        // c = prompt('Ваш любимый жанр под номером ' + [i]);
+        c = prompt(`Ваш любимый жанр под номером ${i}`);
+        personalMovieDB.genres.push(c);
+    }
+}
+
+writeYourGenres();
+console.log(personalMovieDB);
